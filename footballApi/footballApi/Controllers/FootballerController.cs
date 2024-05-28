@@ -17,7 +17,7 @@ namespace Api.Controllers
         public IActionResult GetAllFootballers()
         {
             var footballers = _footballerLogicManager.GetAllFootballers();
-            return View(footballers);
+            return View("Index", footballers);
         }
     }
 }

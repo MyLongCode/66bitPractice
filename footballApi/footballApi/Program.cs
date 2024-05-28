@@ -1,7 +1,13 @@
+using Dal;
+using Logic;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.TryAddLogic();
+builder.Services.TryAddDal();
 
 var app = builder.Build();
 
