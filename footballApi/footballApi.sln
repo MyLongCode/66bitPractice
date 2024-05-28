@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "footballApi", "footballApi\footballApi.csproj", "{2FA5D962-DBD7-47D5-94F8-F39A796BC2CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "footballApi\Api.csproj", "{2FA5D962-DBD7-47D5-94F8-F39A796BC2CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "Dal\Dal.csproj", "{0C869517-0826-40D3-9765-B20B4F144852}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{1ADC9E9C-3897-4056-AFD5-50D640B9A63D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{2FA5D962-DBD7-47D5-94F8-F39A796BC2CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FA5D962-DBD7-47D5-94F8-F39A796BC2CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FA5D962-DBD7-47D5-94F8-F39A796BC2CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C869517-0826-40D3-9765-B20B4F144852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C869517-0826-40D3-9765-B20B4F144852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C869517-0826-40D3-9765-B20B4F144852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C869517-0826-40D3-9765-B20B4F144852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ADC9E9C-3897-4056-AFD5-50D640B9A63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ADC9E9C-3897-4056-AFD5-50D640B9A63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ADC9E9C-3897-4056-AFD5-50D640B9A63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ADC9E9C-3897-4056-AFD5-50D640B9A63D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
