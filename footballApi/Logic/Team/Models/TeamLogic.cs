@@ -1,16 +1,16 @@
-﻿using Dal.Footballer.Models;
+﻿using Logic.Footballer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dal.Team.Models
+namespace Logic.Team.Models
 {
-    public class TeamDal
+    public class TeamLogic
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<FootballerDal> Footballers { get; set; } = new List<FootballerDal>();
+        public List<FootballerLogic> Footballers { get; set; } = new List<FootballerLogic>();
     }
 }

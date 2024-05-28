@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Footballer\Models\" />
-    <Folder Include="Team\" />
+    <Folder Include="Team\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>
