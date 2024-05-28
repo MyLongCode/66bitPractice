@@ -13,5 +13,7 @@ namespace Dal.Footballer.Interfaces
         public int CreateFootballer (FootballerDal footballer);
         public int UpdateFootballer (FootballerDal footballer);
         public int DeleteFootballerById (int id);
+        public IEnumerable<FootballerDal> GetAllFootballers();
+        public IEnumerable<FootballerDal> GetAllFootballersByTeamId(int teamId);
     }
 }

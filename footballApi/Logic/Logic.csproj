@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Footballer\Models\" />
+    <Folder Include="Team\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dal\Dal.csproj" />
+  </ItemGroup>
+
 </Project>
