@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Footballer>
+﻿@using Api.Models;
+@model IEnumerable<Footballer>
 
 <h2>Список футболистов</h2>
 <table class="table" id="footballersList">
@@ -9,7 +10,7 @@
                     <td>@item.FirstName</td>
                     <td>@item.LastName</td>
                     <td>@item.Sex</td>
-                    <td>@item.Birthday.ToString("dd.MM.yyyy")</td>
+                    <td>@item.BirthdayDate.ToString("dd.MM.yyyy")</td>
                     <td>@item.Country</td>
                     <td>@item.TeamName</td>
                         <td>
