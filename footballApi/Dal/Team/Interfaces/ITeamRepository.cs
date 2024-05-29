@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dal.Team.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,8 @@ namespace Dal.Team.Interfaces
 {
     public interface ITeamRepository
     {
+        public int CreateNewTeam(string name);
+        public IEnumerable<TeamDal> GetAllTeams();
+        public TeamDal GetTeamByName(string name);
     }
 }

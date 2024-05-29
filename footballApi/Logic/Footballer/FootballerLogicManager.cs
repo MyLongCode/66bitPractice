@@ -1,7 +1,9 @@
 ﻿using Dal.Footballer.Interfaces;
 using Dal.Footballer.Models;
+using Dal.Team.Interfaces;
 using Logic.Footballer.Interfaces;
 using Logic.Footballer.Models;
+using Logic.Team.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +15,26 @@ namespace Logic.Footballer
     public class FootballerLogicManager : IFootballerLogicManager
     {
         private readonly IFootballerRepository _footballerRepository;
+        private readonly ITeamRepository _teamRepository;
 
-        public FootballerLogicManager(IFootballerRepository footballerRepository)
+        public FootballerLogicManager(IFootballerRepository footballerRepository
+            , ITeamRepository teamRepository)
         {
             _footballerRepository = footballerRepository;
+            _teamRepository = teamRepository;
         }
         public int CreateFootballer(FootballerLogic footballer)
         {
+            var team = _teamRepository.GetTeamByName(footballer.TeamName);
+            if (team == null)
+                _teamRepository.CreateNewTeam(footballer.TeamName);
             return _footballerRepository.CreateFootballer(new FootballerDal
             {
                 FirstName = footballer.FirstName,
                 LastName = footballer.LastName,
                 Sex = footballer.Sex,
                 BirthdayDate = footballer.BirthdayDate,
-                TeamId = footballer.TeamId,
+                TeamId = _teamRepository.GetTeamByName(footballer.TeamName).Id,
                 Country = footballer.Country,
             });
         }
@@ -44,7 +52,7 @@ namespace Logic.Footballer
                 LastName = f.LastName,
                 Sex = f.Sex,
                 BirthdayDate = f.BirthdayDate,
-                TeamId = f.TeamId,
+                TeamName = f.Team.Name,
                 Country = f.Country,
             });
         }

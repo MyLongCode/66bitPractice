@@ -18,7 +18,8 @@ namespace Dal.EF
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            //Database.EnsureCreated();
         }
     }
 }

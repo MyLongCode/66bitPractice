@@ -1,6 +1,7 @@
 ﻿using Dal.EF;
 using Dal.Footballer.Interfaces;
 using Dal.Footballer.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Dal.Footballer
 
         public IEnumerable<FootballerDal> GetAllFootballers()
         {
-            return db.Footballers.ToList();
+            return db.Footballers.Include(f => f.Team).ToList();
         }
 
         public IEnumerable<FootballerDal> GetAllFootballersByTeamId(int teamId)

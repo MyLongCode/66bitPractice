@@ -14,8 +14,7 @@ namespace Logic.Footballer.Models
         public string LastName { get; set; }
         public Sex Sex { get; set; }
         public DateTime BirthdayDate { get; set; }
-        public int TeamId { get; set; }
-        public TeamLogic Team { get; set; }
+        public string TeamName { get; set; }
         public Country Country { get; set; }
     }
 }
