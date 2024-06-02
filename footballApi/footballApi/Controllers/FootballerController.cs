@@ -106,5 +106,22 @@ namespace Api.Controllers
             }
             return NotFound();
         }
+
+        [HttpPost]
+        [Route("/footballer/{id}/update")]
+        public IActionResult Update(UpdateFootballerRequest dto)
+        {
+            _footballerLogicManager.UpdateFootballer(new FootballerLogic
+            {
+                Id = dto.Id,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                Sex = dto.Sex,
+                BirthdayDate = dto.BirthdayDate,
+                TeamName = dto.TeamName,
+                Country = dto.Country,
+            });
+            return RedirectToAction("Index");
+        }
     }
 }

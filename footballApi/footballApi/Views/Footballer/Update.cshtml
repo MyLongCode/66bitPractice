@@ -1,7 +1,7 @@
 ﻿@using Api.Models;
 @model Footballer
 <h2>Изменение футболиста</h2>
-<form asp-controller="footballer" asp-action="Update" asp-antiforgery="false" method="post" asp-route-id="@item.Id">
+<form asp-controller="footballer" asp-action="Update" asp-antiforgery="false" method="post" asp-route-id="@Model.Id">
     <p>
         <label asp-for="FirstName">Имя</label><br />
         <input type="text" asp-for="FirstName" required/>

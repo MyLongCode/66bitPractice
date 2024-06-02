@@ -65,12 +65,31 @@ namespace Logic.Footballer
 
         public FootballerLogic GetFootballerById(int id)
         {
-            throw new NotImplementedException();
+            var f = _footballerRepository.GetFootballerById(id);
+            return new FootballerLogic
+            {
+                Id = f.Id,
+                FirstName = f.FirstName,
+                LastName = f.LastName,
+                Sex = f.Sex,
+                BirthdayDate = f.BirthdayDate,
+                TeamName = f.Team.Name,
+                Country = f.Country,
+            };
         }
 
         public int UpdateFootballer(FootballerLogic footballer)
         {
-            throw new NotImplementedException();
+            return _footballerRepository.UpdateFootballer(new FootballerDal
+            {
+                Id = footballer.Id,
+                FirstName = footballer.FirstName,
+                LastName = footballer.LastName,
+                Sex = footballer.Sex,
+                BirthdayDate = footballer.BirthdayDate,
+                Country = footballer.Country,
+                Team = _teamRepository.GetTeamByName(footballer.TeamName)
+            });
         }
     }
 }
