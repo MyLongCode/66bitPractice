@@ -41,7 +41,7 @@ namespace Logic.Footballer
 
         public int DeleteFootballerById(int id)
         {
-            throw new NotImplementedException();
+            return _footballerRepository.DeleteFootballerById(id);
         }
 
         public IEnumerable<FootballerLogic> GetAllFootballers()
