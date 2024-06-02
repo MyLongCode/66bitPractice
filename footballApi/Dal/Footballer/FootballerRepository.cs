@@ -42,13 +42,29 @@ namespace Dal.Footballer
 
         public FootballerDal GetFootballerById(int id)
         {
-            var footballer = db.Footballers.Find(id);
+            var footballer = db.Footballers.Include(f => f.Team).FirstOrDefault(f => f.Id == id);
             return footballer;
         }
 
         public int UpdateFootballer(FootballerDal footballer)
         {
-            throw new NotImplementedException();
+            //var _footballer = db.Footballers.FirstOrDefault(p => p.Id == footballer.Id);
+            //if (_footballer != null)
+            //{
+            //    _footballer.BirthdayDate = footballer.BirthdayDate;
+            //    _footballer.TeamId = footballer.TeamId;
+            //    _footballer.Country = footballer.Country;
+            //    _footballer.FirstName = footballer.FirstName;
+            //    _footballer.LastName = footballer.LastName;
+            //    _footballer.Sex = footballer.Sex;
+            //    db.SaveChanges();
+            //}
+
+            db.Update(footballer);
+            db.Update(footballer.Team);
+            db.SaveChanges();
+            
+            return footballer.Id;
         }
     }
 }

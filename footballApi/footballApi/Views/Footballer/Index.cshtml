@@ -14,7 +14,7 @@
                     <td>@item.Country</td>
                     <td>@item.TeamName</td>
                         <td>
-                            <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a>
+                            <a asp-action="Update" asp-controller="Footballer" asp-route-id="@item.Id">Изменить</a>
                         </td>
                         <td>
                                  <form asp-controller="footballer" asp-action="Delete" asp-antiforgery="false" method="post" asp-route-id="@item.Id">
