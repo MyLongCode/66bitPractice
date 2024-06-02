@@ -80,6 +80,9 @@ namespace Logic.Footballer
 
         public int UpdateFootballer(FootballerLogic footballer)
         {
+            var team = _teamRepository.GetTeamByName(footballer.TeamName);
+            if (team == null)
+                _teamRepository.CreateNewTeam(footballer.TeamName);
             return _footballerRepository.UpdateFootballer(new FootballerDal
             {
                 Id = footballer.Id,
@@ -89,7 +92,7 @@ namespace Logic.Footballer
                 BirthdayDate = footballer.BirthdayDate,
                 Country = footballer.Country,
                 Team = _teamRepository.GetTeamByName(footballer.TeamName)
-            });
+                });
         }
     }
 }
