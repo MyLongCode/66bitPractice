@@ -84,5 +84,27 @@ namespace Api.Controllers
             _footballerLogicManager.DeleteFootballerById(id);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        [Route("/footballer/{id}/update")]
+        public IActionResult Update(int id)
+        {
+            if (id != null)
+            {
+                var footballer = _footballerLogicManager.GetFootballerById(id);
+                ViewBag.Teams = _teamLogicManager.GetAllTeams();
+                if (footballer != null) return View(new Footballer
+                {
+                    Id = footballer.Id,
+                    FirstName = footballer.FirstName,
+                    LastName = footballer.LastName,
+                    Sex = footballer.Sex,
+                    BirthdayDate = footballer.BirthdayDate,
+                    TeamName = footballer.TeamName,
+                    Country = footballer.Country,
+                });
+            }
+            return NotFound();
+        }
     }
 }
