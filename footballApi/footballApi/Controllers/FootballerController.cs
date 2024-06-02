@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [Route("/footballer")]
     public class FootballerController : Controller
     {
         private IFootballerLogicManager _footballerLogicManager;
@@ -20,7 +19,6 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        [Route("/footballer")]
         public IActionResult Index()
         {
             var footballers = _footballerLogicManager.GetAllFootballers()
