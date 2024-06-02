@@ -48,6 +48,7 @@ namespace Logic.Footballer
         {
             return _footballerRepository.GetAllFootballers().Select(f => new FootballerLogic
             {
+                Id = f.Id,
                 FirstName = f.FirstName,
                 LastName = f.LastName,
                 Sex = f.Sex,

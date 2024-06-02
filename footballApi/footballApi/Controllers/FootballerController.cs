@@ -75,7 +75,13 @@ namespace Api.Controllers
                 Country = dto.Country,
             });
             return RedirectToAction("");
-
+        }
+        [HttpDelete]
+        [Route("/footballer/{id}")]
+        public IActionResult DeleteFootballer(int id)
+        {
+            _footballerLogicManager.DeleteFootballerById(id);
+            return RedirectToAction("GetAllFootballers");
         }
     }
 }
