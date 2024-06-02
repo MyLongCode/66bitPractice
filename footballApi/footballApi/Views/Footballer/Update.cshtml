@@ -1,5 +1,5 @@
-﻿@using Api.Models;
-@model Footballer
+﻿@using Api.Controllers;
+@model UpdateFootballerRequest
 <h2>Изменение футболиста</h2>
 <form asp-controller="footballer" asp-action="Update" asp-antiforgery="false" method="post" asp-route-id="@Model.Id">
     <p>
@@ -22,39 +22,17 @@
     <p>
         <label asp-for="TeamName">Команда</label><br />
         <select asp-for="TeamName" id="teamSelection" onchange="toggleCustomTeamInput(this)">
-        @foreach (var item in @ViewBag.Teams){
-            <option value="@item.Name">@item.Name</option>
-        }
-        <option value="other_team">Выбрать другую</option>
+            @foreach (var item in @ViewBag.Teams)
+            {
+                <option value="@item.Name">@item.Name</option>
+            }
         </select>
-        <div id="customTeamContainer" style="display: none;">
-            <label asp-for="TeamName">Введите название команды:</label>
-            <input type="text" name="TeamName"/>
-        </div>
-        
+        </br>
+        <input asp-for="CustomTeamName" placeholder="Новая команда:"     />
+        <span asp-validation-for="@Model.TeamName" class="text-danger"></span>
+
     </p>
     <p>
         <input type="submit" value="Изменить" />
     </p>
 </form>
-
-@section scripts {
-        <script>
-            var customTeamSelect = document.getElementById("teamSelection");
-            var customTeamInput = document.getElementById("teamInput");
-            var customContainer = document.getElementById("customTeamContainer");
-            if (customTeamSelect.length === 1){
-                customContainer.style.display = 'block';
-            }
-               function toggleCustomTeamInput() {
-                    if (customTeamSelect.value === "other_team"){
-                        customContainer.style.display = 'block';
-                    }
-                    if (customTeamSelect.value !== "other_team"){
-                        customContainer.style.display = 'none';
-                        customTeamInput.value = '';
-                    }
-                }
-
-        </script>
-}

@@ -1,5 +1,5 @@
-﻿@using Api.Models;
-@model Footballer
+﻿@using Api.Controllers;
+@model CreateFootballerRequest
 <h2>Создание футболиста</h2>
 <form asp-controller="footballer">
     <p>
@@ -25,36 +25,13 @@
         @foreach (var item in @ViewBag.Teams){
             <option value="@item.Name">@item.Name</option>
         }
-        <option value="other_team">Выбрать другую</option>
         </select>
-        <div id="customTeamContainer" style="display: none;">
-            <label asp-for="TeamName">Введите название команды:</label>
-            <input type="text" name="TeamName"/>
-        </div>
+        </br>
+        <input asp-for="CustomTeamName" placeholder="Новая команда:"     />
+        <span asp-validation-for="@Model.TeamName" class="text-danger"></span>
         
     </p>
     <p>
         <input type="submit" value="Создать" />
     </p>
 </form>
-
-@section scripts {
-        <script>
-            var customTeamSelect = document.getElementById("teamSelection");
-            var customTeamInput = document.getElementById("teamInput");
-            var customContainer = document.getElementById("customTeamContainer");
-            if (customTeamSelect.length === 1){
-                customContainer.style.display = 'block';
-            }
-               function toggleCustomTeamInput() {
-                    if (customTeamSelect.value === "other_team"){
-                        customContainer.style.display = 'block';
-                    }
-                    if (customTeamSelect.value !== "other_team"){
-                        customContainer.style.display = 'none';
-                        customTeamInput.value = '';
-                    }
-                }
-
-        </script>
-}

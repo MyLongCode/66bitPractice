@@ -63,6 +63,7 @@ namespace Api.Controllers
         [Route("/footballer/create")]
         public IActionResult Create(CreateFootballerRequest dto)
         {
+            if (dto.CustomTeamName != null) dto.TeamName = dto.CustomTeamName;
             if (dto.TeamName == null)
                 return BadRequest("Team is not found");
             var footballerId = _footballerLogicManager.CreateFootballer(new FootballerLogic
@@ -93,7 +94,7 @@ namespace Api.Controllers
             {
                 var footballer = _footballerLogicManager.GetFootballerById(id);
                 ViewBag.Teams = _teamLogicManager.GetAllTeams();
-                if (footballer != null) return View(new Footballer
+                if (footballer != null) return View(new UpdateFootballerRequest
                 {
                     Id = footballer.Id,
                     FirstName = footballer.FirstName,
@@ -111,6 +112,7 @@ namespace Api.Controllers
         [Route("/footballer/{id}/update")]
         public IActionResult Update(UpdateFootballerRequest dto)
         {
+            if (dto.CustomTeamName != null) dto.TeamName = dto.CustomTeamName;
             _footballerLogicManager.UpdateFootballer(new FootballerLogic
             {
                 Id = dto.Id,
