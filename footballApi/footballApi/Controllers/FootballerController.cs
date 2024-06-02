@@ -21,7 +21,7 @@ namespace Api.Controllers
 
         [HttpGet]
         [Route("/footballer")]
-        public IActionResult GetAllFootballers()
+        public IActionResult Index()
         {
             var footballers = _footballerLogicManager.GetAllFootballers()
                 .Select(f => new Footballer
@@ -39,7 +39,7 @@ namespace Api.Controllers
 
         [HttpGet]
         [Route("/footballer/create")]
-        public IActionResult CreateFootballer()
+        public IActionResult Create()
         {
             ViewBag.Teams = _teamLogicManager.GetAllTeams()
                 .Select(t => new Team
@@ -61,7 +61,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("/footballer/create")]
-        public IActionResult CreateFootballer(CreateFootballerRequest dto)
+        public IActionResult Create(CreateFootballerRequest dto)
         {
             if (dto.TeamName == null)
                 return BadRequest("Team is not found");
@@ -74,14 +74,15 @@ namespace Api.Controllers
                 TeamName = dto.TeamName,
                 Country = dto.Country,
             });
-            return RedirectToAction("");
+            return RedirectToAction("Index");
         }
-        [HttpDelete]
-        [Route("/footballer/{id}")]
-        public IActionResult DeleteFootballer(int id)
+
+        [HttpPost]
+        [Route("/footballer/{id}/delete")]
+        public IActionResult Delete(int id)
         {
             _footballerLogicManager.DeleteFootballerById(id);
-            return RedirectToAction("GetAllFootballers");
+            return RedirectToAction("Index");
         }
     }
 }
