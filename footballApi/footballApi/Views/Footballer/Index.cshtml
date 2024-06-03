@@ -10,7 +10,7 @@
                     <td>@item.FirstName</td>
                     <td>@item.LastName</td>
                     <td>@item.Sex</td>
-                    <td>@item.BirthdayDate.ToString("dd.MM.yyyy")</td>
+                    <td>@item.BirthdayDate.ToString("yyyy-MM-dd")</td>
                     <td>@item.Country</td>
                     <td>@item.TeamName</td>
                         <td>
@@ -31,7 +31,7 @@
         <script>
             var connection = new signalR.HubConnectionBuilder().withUrl("/hub").build();
 
-                connection.on("Receive", function (firstName, lastName, sex,date, country, team) {
+                connection.on("CreateFootballer", function (firstName, lastName, sex,date, country, team) {
                 var table = document.getElementById("footballersList");
                 var row = table.insertRow(table.length);
                 var cell1 = row.insertCell(0);
