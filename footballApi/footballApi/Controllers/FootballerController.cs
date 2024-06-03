@@ -1,9 +1,11 @@
 ﻿using Api.Models;
+using Api.SignalR.Hubs;
 using Logic.Footballer.Interfaces;
 using Logic.Footballer.Models;
 using Logic.Team.Interfaces;
 using Logic.Team.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Api.Controllers
 {

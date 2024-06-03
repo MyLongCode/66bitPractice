@@ -10,7 +10,7 @@
                     <td>@item.FirstName</td>
                     <td>@item.LastName</td>
                     <td>@item.Sex</td>
-                    <td>@item.BirthdayDate.ToString("dd.MM.yyyy")</td>
+                    <td>@item.BirthdayDate.ToString("yyyy-MM-dd")</td>
                     <td>@item.Country</td>
                     <td>@item.TeamName</td>
                         <td>
@@ -24,3 +24,32 @@
                 </tr>
     }
 </table>
+
+@section Scripts {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+
+        <script>
+            var connection = new signalR.HubConnectionBuilder().withUrl("/hub").build();
+
+                connection.on("CreateFootballer", function (firstName, lastName, sex,date, country, team) {
+                var table = document.getElementById("footballersList");
+                var row = table.insertRow(table.length);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                cell1.innerHTML = firstName;
+                cell2.innerHTML = lastName;
+                cell3.innerHTML = sex;
+                cell4.innerHTML = date;
+                cell5.innerHTML = country;
+                cell6.innerHTML = team;
+            });
+
+            connection.start().catch(function (err) {
+                return console.error(err.toString());
+            });
+        </script>
+}
