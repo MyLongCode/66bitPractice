@@ -4,11 +4,11 @@
 <form asp-controller="footballer">
     <p>
         <label asp-for="FirstName">Имя</label><br />
-        <input type="text" asp-for="FirstName" required/>
+        <input id="firstName" type="text" asp-for="FirstName" required/>
     </p>
     <p>
         <label asp-for="LastName">Фамилия</label><br />
-        <input type="text" asp-for="LastName" required />
+        <input id="lastName" type="text" asp-for="LastName" required />
     </p>
     <p>
         <label asp-for="Sex">Пол</label><br />
@@ -35,3 +35,17 @@
         <input type="submit" value="Создать" />
     </p>
 </form>
+
+@section Scripts {
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+
+            <script>
+                var connection = new signalR.HubConnectionBuilder().withUrl("/hub").build();
+                   
+                connection.invoke("CreateFootballer")
+
+                connection.start().catch(function (err) {
+                    return console.error(err.toString());
+                });
+            </script>
+}
