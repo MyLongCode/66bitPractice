@@ -52,18 +52,12 @@
                         country = country.options[country.selectedIndex].text
                         let teamName = document.getElementById("teamName");
                         teamName = teamName.options[teamName.selectedIndex].text
-                        console.log(teamName);
                         let customTeamName = document.getElementById("customTeamName").value;
-                        console.log(customTeamName);
                         if (customTeamName !== ""){
                             teamName = customTeamName;
                         }
-                        console.log(teamName);
                         
-                        
-                        
-                        
-                        
+
                         
                         connection.invoke("Send", firstName, lastName, sex,
                                       birthday, country, teamName)
